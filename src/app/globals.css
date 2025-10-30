@@ -1,26 +1,55 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Основні кольори Skoda */
+  --skoda-emerald-green: #0e3a2f;
+  --skoda-electric-green: #78faae;
+
+  /* Вторинні кольори */
+  --skoda-black: #000000;
+  --skoda-white: #ffffff;
+  --skoda-chrome-750: #394748;
+  --skoda-chrome-500: #0f797a;
+  --skoda-chrome-400: #a0a7a8;
+  --skoda-chrome-200: #cacecf;
+  --skoda-chrome-50: #e3e5e6;
+  --skoda-chrome-25: #f1f2f2;
+
+  /* Третинні кольори */
+  --skoda-blue: #0961a1;
+  --skoda-red: #ed2100;
+  --skoda-gray: #898989;
+  --skoda-green: #568203;
+  --skoda-gold: #efbf04;
+  --skoda-bronze: #ce8946;
+  --skoda-yellow: #faeb67;
+  --skoda-orange: #ff7518;
+  --skoda-teal: #1ed4df;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Реєстрація кольорів */
+  --color-skoda-emerald-green: var(--skoda-emerald-green);
+  --color-skoda-electric-green: var(--skoda-electric-green);
+  --color-skoda-black: var(--skoda-black);
+  --color-skoda-white: var(--skoda-white);
+  --color-skoda-chrome-750: var(--skoda-chrome-750);
+  --color-skoda-chrome-500: var(--skoda-chrome-500);
+  --color-skoda-chrome-400: var(--skoda-chrome-400);
+  --color-skoda-chrome-200: var(--skoda-chrome-200);
+  --color-skoda-chrome-50: var(--skoda-chrome-50);
+  --color-skoda-chrome-25: var(--skoda-chrome-25);
+  --color-skoda-blue: var(--skoda-blue);
+  --color-skoda-red: var(--skoda-red);
+  --color-skoda-gray: var(--skoda-gray);
+  --color-skoda-green: var(--skoda-green);
+  --color-skoda-gold: var(--skoda-gold);
+  --color-skoda-bronze: var(--skoda-bronze);
+  --color-skoda-yellow: var(--skoda-yellow);
+  --color-skoda-orange: var(--skoda-orange);
+  --color-skoda-teal: var(--skoda-teal);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Брейкпоінти */
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 1200px;
 }
