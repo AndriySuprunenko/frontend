@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 
-import '../globals.css';
 import Header from '../_components/header';
+import '../globals.css';
 
 const skodaNext = localFont({
   src: [
@@ -27,9 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={skodaNext.variable}>
-      <body className={`${skodaNext.className}`}>
+      <body className={`${skodaNext.className} min-h-screen bg-white`}>
         <Header />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

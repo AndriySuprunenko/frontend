@@ -4,26 +4,25 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 import Navlink from './nav-link';
-
 import { NAVIGATION_LINKS } from '../lib/navigation';
 
 export default function Navigation() {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
   return (
-    <nav>
+    <nav className='flex '>
       <ul className='flex'>
         {NAVIGATION_LINKS.map((link) => (
           <li
             key={link.id}
-            className='inline-block mr-6 relative'
+            className='inline-block relative'
             onMouseEnter={() => link.sublinks && setOpenDropdown(link.id)}
             onMouseLeave={() => setOpenDropdown(null)}
           >
             {link.sublinks ? (
               <>
                 <button
-                  className='flex items-center gap-1 hover:text-skoda-electric-green transition-colors text-skoda-electric-green'
+                  className='text-skoda-electric-green px-4 py-2 hover:bg-skoda-electric-green/10 transition-all w-full flex items-center cursor-pointer'
                   aria-haspopup='menu'
                   aria-expanded={openDropdown === link.id}
                 >
@@ -43,7 +42,7 @@ export default function Navigation() {
                   }`}
                 >
                   {link.sublinks?.map((sublink) => (
-                    <li key={sublink.id} role='menuitem' className='p-1.5'>
+                    <li key={sublink.id} role='menuitem'>
                       <Navlink href={sublink.href}>{sublink.text}</Navlink>
                     </li>
                   ))}
