@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Banners from '../_components/bunners';
 
 export const metadata: Metadata = {
   title: 'Офіційний дилер Škoda у Кременчуці — Нові автомобілі та з пробігом',
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <div className='text-skoda-emerald-green'>Головна</div>;
+  return (
+    <div className='text-skoda-emerald-green'>
+      <Banners />
+    </div>
+  );
 }
