@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { createBanner, uploadImage } from '../../../lib/api/banners';
-import { redirect } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { updateBanner, uploadImage, getBanner } from '@/app/lib/api/banners';
 
 export default function NewBannerPage() {
+  const id = useParams().id as number;
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [listItems, setListItems] = useState<string[]>([]);
@@ -15,18 +17,36 @@ export default function NewBannerPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
+  useEffect(() => {
+    async function fetchBanner() {
+      if (!id) return;
+      try {
+        const data = await getBanner(id);
+        setTitle(data.title || '');
+        setDescription(data.description || '');
+        setListItems(data.listItems || []);
+        setButtonText(data.buttonText || '');
+        setButtonUrl(data.buttonUrl || '');
+        setPreview(data.imageUrl || null);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchBanner();
+  }, [id]);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
 
     try {
-      let imageUrl = '';
+      let imageUrl = preview || '';
       if (image) {
         imageUrl = await uploadImage(image);
       }
 
-      await createBanner({
+      await updateBanner(id, {
         title,
         description,
         listItems,
@@ -35,7 +55,7 @@ export default function NewBannerPage() {
         imageUrl,
       });
 
-      setMessage('✅ Банер успішно створено!');
+      setMessage('✅ Банер успішно оновленно!');
       setTitle('');
       setDescription('');
       setListItems([]);
@@ -45,10 +65,9 @@ export default function NewBannerPage() {
       setPreview(null);
     } catch (error) {
       console.error(error);
-      setMessage('❌ Помилка при створенні банера');
+      setMessage('❌ Помилка при оновленні банера');
     } finally {
       setLoading(false);
-      redirect('/admin/banners');
     }
   }
 
@@ -70,7 +89,7 @@ export default function NewBannerPage() {
 
   return (
     <main className='max-w-2xl mx-auto p-6'>
-      <h1 className='text-2xl font-bold mb-4'>Створити банер</h1>
+      <h1 className='text-2xl font-bold mb-4'>Оновити банер</h1>
 
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -93,6 +112,7 @@ export default function NewBannerPage() {
 
         <textarea
           placeholder='Пункти списку (по одному на рядок)'
+          value={listItems.join('\n')}
           onChange={(e) => handleListChange(e.target.value)}
           className='border p-2 rounded'
           rows={3}
@@ -116,25 +136,28 @@ export default function NewBannerPage() {
 
         <div>
           <label className='block mb-1'>Зображення</label>
-          <input type='file' accept='image/*' onChange={handleFileChange} />
+          {message && <p className='text-center mt-2'>{message}</p>}
+          <input
+            type='file'
+            accept='image/*'
+            onChange={handleFileChange}
+            className='bg-skoda-chrome-400 p-2 rounded-3xl cursor-pointer'
+          />
           {preview && (
             <img
               src={preview}
               alt='preview'
-              className='mt-3 w-full rounded shadow'
+              className='mt-3 w-64 rounded shadow'
             />
           )}
         </div>
-
         <button
           type='submit'
           disabled={loading}
           className='bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-60'
         >
-          {loading ? 'Завантаження...' : 'Створити банер'}
+          {loading ? 'Завантаження...' : 'Оновити банер'}
         </button>
-
-        {message && <p className='text-center mt-2'>{message}</p>}
       </form>
     </main>
   );

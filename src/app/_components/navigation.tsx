@@ -22,7 +22,7 @@ export default function Navigation() {
             {link.sublinks ? (
               <>
                 <button
-                  className='text-skoda-electric-green px-4 py-2 hover:bg-skoda-electric-green/10 transition-all w-full flex items-center cursor-pointer'
+                  className='text-skoda-black px-4 py-2 hover:bg-skoda-emerald-green/20 transition-all w-full flex items-center cursor-pointer'
                   aria-haspopup='menu'
                   aria-expanded={openDropdown === link.id}
                 >
@@ -35,7 +35,7 @@ export default function Navigation() {
                 </button>
                 <ul
                   role='menu'
-                  className={`absolute left-0 top-full z-50 bg-skoda-emerald-green w-40 transition-all duration-200 ease-out ${
+                  className={`absolute left-0 top-full z-50 bg-skoda-white w-40 transition-all duration-200 ease-out ${
                     openDropdown === link.id
                       ? 'opacity-100 translate-y-0 visible'
                       : 'opacity-0 -translate-y-2 invisible'

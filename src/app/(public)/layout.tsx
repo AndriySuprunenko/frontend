@@ -6,7 +6,7 @@ import '../globals.css';
 const skodaNext = localFont({
   src: [
     {
-      path: '../fonts/SkodaNext-Light.ttf',
+      path: '../fonts/SkodaNext-Regular.ttf',
       weight: '400',
       style: 'normal',
     },

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className='text-skoda-emerald-green'>
+    <div className='text-skoda-black'>
       <Banners />
     </div>
   );

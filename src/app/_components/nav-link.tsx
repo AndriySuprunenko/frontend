@@ -17,8 +17,8 @@ export default function Navlink({ href, children }: Props) {
       className={clsx(
         'px-4 py-2 transition-all w-full block',
         isActive
-          ? 'text-skoda-electric-green bg-skoda-electric-green/20'
-          : 'text-skoda-electric-green hover:bg-skoda-electric-green/20'
+          ? 'text-skoda-black bg-skoda-emerald-green/20'
+          : 'text-skoda-black hover:bg-skoda-emerald-green/20'
       )}
     >
       {children}
