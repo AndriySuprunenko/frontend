@@ -17,6 +17,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
   loading?: boolean;
   loadingText?: string;
+  classNames?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
   loadingText = "Завантаження...",
   disabled,
   children,
-  className,
+  classNames,
   ...props
 }) => {
   const styles: Record<ButtonVariant, any> = {
@@ -90,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
     disabled || loading
       ? "opacity-50 cursor-not-allowed hover:scale-100 active:scale-100"
       : "cursor-pointer hover:scale-105 active:scale-95",
-    className,
+    classNames,
   );
 
   return (
