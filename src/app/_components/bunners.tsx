@@ -7,7 +7,7 @@ export default async function Banners() {
 
   return (
     <section>
-      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 auto-rows-[270px] p-6">
+      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 auto-rows-auto lg:auto-rows-[270px] p-6">
         {banners.map((b, i) => (
           <div
             key={b.id}

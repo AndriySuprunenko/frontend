@@ -11,7 +11,7 @@ export default function Navigation() {
 
   return (
     <nav className="hidden lg:flex">
-      <ul className="flex">
+      <ul className="flex items-center">
         {NAVIGATION_LINKS.map((link) => (
           <li
             key={link.id}
