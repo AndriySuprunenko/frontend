@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Banners from "../_components/bunners";
+import Banners from "../_components/banners";
 
 export const metadata: Metadata = {
   title: "Офіційний дилер Škoda у Кременчуці — Нові автомобілі та з пробігом",
