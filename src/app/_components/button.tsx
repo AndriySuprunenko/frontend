@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import clsx from "clsx";
 
@@ -9,7 +7,15 @@ type ButtonVariant =
   | "outline-black"
   | "outline"
   | "gray";
+
 type ButtonSize = "sm" | "md" | "lg" | "xl";
+
+type StyleState = {
+  base: string;
+  hover: string;
+  active: string;
+  focus: string;
+};
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -32,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
   classNames,
   ...props
 }) => {
-  const styles: Record<ButtonVariant, any> = {
+  const styles: Record<ButtonVariant, StyleState> = {
     electric: {
       base: "text-skoda-emerald-green bg-skoda-electric-green border-skoda-electric-green",
       hover:

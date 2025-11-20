@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { getBanners } from "../lib/api/banners";
 import Button from "./button";
 

@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk" className={skodaNext.variable}>
+    <html lang="uk" suppressHydrationWarning className={skodaNext.variable}>
       <body className={`${skodaNext.className} min-h-screen bg-white`}>
         <Header />
         <main>{children}</main>

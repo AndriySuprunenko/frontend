@@ -9,7 +9,7 @@ export interface Banner {
   createdAt?: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getBanners(): Promise<Banner[]> {
   const res = await fetch(`${API_URL}/banners`, { cache: "no-store" });

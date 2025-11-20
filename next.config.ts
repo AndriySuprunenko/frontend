@@ -7,14 +7,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "localhost",
-        port: "5001",
-        pathname: "/uploads/**",
-        search: "",
-      },
-      {
-        protocol: "http",
-        hostname: "backend",
-        port: "8080",
+        port: "5048",
         pathname: "/uploads/**",
         search: "",
       },
