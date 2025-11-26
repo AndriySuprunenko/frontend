@@ -1,25 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { deleteBanner } from "../../lib/api/banners";
+import { deleteBanner, IBanner } from "../../lib/api/banners";
 import { Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
 
-type Banner = {
-  id: number;
-  title: string;
-  description?: string;
-  imageUrl?: string;
-  listItems?: string[];
-};
-
-export default function BannerCard({ banner }: { banner: Banner }) {
+export default function BannerCard({ banner }: { banner: IBanner }) {
   const handleDeleteBanner = async () => {
     if (!confirm("Ви впевнені, що хочете видалити цей банер?")) return;
 
     try {
       await deleteBanner(banner.id);
-      window.location.reload(); // або router.refresh() якщо використаєш useRouter
+      window.location.reload();
     } catch (error) {
       console.error("Помилка при видаленні банера:", error);
       alert("Не вдалося видалити банер.");
