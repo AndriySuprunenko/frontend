@@ -72,73 +72,80 @@ export default function NewBannerPage() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Створити банер</h1>
+    <div className=" p-6 bg-linear-to-br">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-2xl font-bold mb-4">Створити банер</h1>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Заголовок"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="border p-2 rounded"
-          required
-        />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Заголовок"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="border p-2 rounded"
+            required
+          />
 
-        <textarea
-          placeholder="Опис"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="border p-2 rounded"
-          rows={3}
-          required
-        />
+          <textarea
+            placeholder="Опис"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="border p-2 rounded"
+            rows={3}
+            required
+          />
 
-        <textarea
-          placeholder="Пункти списку (по одному на рядок)"
-          onChange={(e) => handleListChange(e.target.value)}
-          className="border p-2 rounded"
-          rows={3}
-        />
+          <textarea
+            placeholder="Пункти списку (по одному на рядок)"
+            onChange={(e) => handleListChange(e.target.value)}
+            className="border p-2 rounded"
+            rows={3}
+          />
 
-        <input
-          type="text"
-          placeholder="Текст кнопки"
-          value={buttonText}
-          onChange={(e) => setButtonText(e.target.value)}
-          className="border p-2 rounded"
-        />
+          <input
+            type="text"
+            placeholder="Текст кнопки"
+            value={buttonText}
+            onChange={(e) => setButtonText(e.target.value)}
+            className="border p-2 rounded"
+          />
 
-        <input
-          type="text"
-          placeholder="Посилання кнопки"
-          value={buttonUrl}
-          onChange={(e) => setButtonUrl(e.target.value)}
-          className="border p-2 rounded"
-        />
+          <input
+            type="text"
+            placeholder="Посилання кнопки"
+            value={buttonUrl}
+            onChange={(e) => setButtonUrl(e.target.value)}
+            className="border p-2 rounded"
+          />
 
-        <div>
-          <label className="block mb-1">Зображення</label>
-          <input type="file" accept="image/*" onChange={handleFileChange} />
-          {preview && (
-            <Image
-              src={preview}
-              alt="preview"
-              className="mt-3 w-full rounded shadow"
+          <div>
+            <label className="block mb-1">Зображення</label>
+            <input
+              className="bg-white p-2 w-fit border border-black rounded cursor-pointer"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
             />
-          )}
-        </div>
+            {preview && (
+              <Image
+                src={preview}
+                alt="preview"
+                className="mt-3 w-full rounded shadow"
+              />
+            )}
+          </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-60"
-        >
-          {loading ? "Завантаження..." : "Створити банер"}
-        </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-60"
+          >
+            {loading ? "Завантаження..." : "Створити банер"}
+          </button>
 
-        {message && <p className="text-center mt-2">{message}</p>}
-      </form>
-    </main>
+          {message && <p className="text-center mt-2">{message}</p>}
+        </form>
+      </div>
+    </div>
   );
 }

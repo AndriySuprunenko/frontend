@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
+
 import Header from "../_components/header";
+import BackButton from "./_components/back-button";
+
 import "../globals.css";
 
 const skodaNext = localFont({
@@ -28,6 +31,7 @@ export default function RootLayout({
     <html lang="uk" suppressHydrationWarning className={skodaNext.variable}>
       <body className={`${skodaNext.className} min-h-screen bg-white`}>
         <Header />
+        <BackButton />
         <main>{children}</main>
       </body>
     </html>

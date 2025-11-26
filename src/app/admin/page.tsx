@@ -5,6 +5,7 @@ import {
   BarChart3,
   Calendar,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function AdminDashboard() {
   // Швидкі дії
@@ -71,7 +72,7 @@ export default function AdminDashboard() {
             {quickActions.map((action, index) => {
               const Icon = action.icon;
               return (
-                <a
+                <Link
                   key={index}
                   href={action.href}
                   className="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-slate-200 hover:border-blue-300 hover:-translate-y-1"
@@ -85,7 +86,7 @@ export default function AdminDashboard() {
                     {action.title}
                   </h3>
                   <p className="text-slate-600 text-sm">{action.description}</p>
-                </a>
+                </Link>
               );
             })}
           </div>
