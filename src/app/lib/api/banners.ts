@@ -1,4 +1,4 @@
-export interface Banner {
+export interface IBanner {
   id: number;
   title: string;
   description: string;
@@ -11,19 +11,19 @@ export interface Banner {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export async function getBanners(): Promise<Banner[]> {
+export async function getBanners(): Promise<IBanner[]> {
   const res = await fetch(`${API_URL}/banners`, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch banners");
   return res.json();
 }
 
-export async function getBanner(id: number): Promise<Banner> {
+export async function getBanner(id: number): Promise<IBanner> {
   const res = await fetch(`${API_URL}/banners/${id}`);
   if (!res.ok) throw new Error("Failed to fetch banner");
   return res.json();
 }
 
-export async function createBanner(data: Banner): Promise<Banner> {
+export async function createBanner(data: IBanner): Promise<IBanner> {
   const res = await fetch(`${API_URL}/banners`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

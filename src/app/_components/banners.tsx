@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { Banner, getBanners } from "../lib/api/banners";
+import { IBanner, getBanners } from "../lib/api/banners";
 import Button from "./button";
 
 export default async function Banners() {
-  let banners: Banner[] = [];
+  let banners: IBanner[] = [];
   let error: string | null = null;
 
   try {
@@ -14,7 +14,7 @@ export default async function Banners() {
     console.error("Backend error:", err);
   }
 
-  if (error && banners.length === 0) {
+  if (error) {
     return (
       <section className="p-6">
         <div className="bg-red-50 border border-red-200 rounded-lg p-6">
@@ -39,12 +39,12 @@ export default async function Banners() {
 
   return (
     <section>
-      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 auto-rows-auto lg:auto-rows-[270px] p-6">
+      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 auto-rows-[270px] p-6">
         {banners.map((banner, index) => (
           <div
             key={banner.id}
             className={`relative overflow-hidden ${
-              index % 2 === 0 ? "lg:row-span-2" : "lg:row-span-1"
+              index % 2 === 0 ? "row-span-1 lg:row-span-2" : "row-span-1"
             }`}
           >
             <Image
